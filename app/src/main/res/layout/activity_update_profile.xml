@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".updateProfile">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Profile"
+            android:textColor="@color/theme"
+            android:textSize="35dp"
+            android:textStyle="bold"
+            android:letterSpacing="0.04"
+            android:layout_marginTop="30dp"
+            />
+
+        <TextView
+            android:id="@+id/nicTxtPU"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginTop="20dp"
+            android:paddingLeft="30dp"
+            android:text="NIC"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/nicPU"
+            android:layout_width="350dp"
+            android:layout_height="58dp"
+            android:layout_marginTop="5dp"
+            android:paddingLeft="20dp"
+            android:hint="NIC"
+            android:text=""
+            android:background="@drawable/custom_edittext"
+            android:textColor="@color/black"
+            android:textColorHighlight="@color/cardview_dark_background"
+            />
+
+        <TextView
+            android:id="@+id/firstNameTxtPU"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:paddingLeft="30dp"
+            android:layout_marginTop="10dp"
+            android:text="First Name"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/f_NamePU"
+            android:layout_width="350dp"
+            android:layout_height="58dp"
+            android:layout_marginTop="5dp"
+            android:paddingLeft="20dp"
+            android:hint="First Name"
+            android:text=""
+            android:background="@drawable/custom_edittext"
+            android:textColor="@color/black"
+            android:textColorHighlight="@color/cardview_dark_background"
+            />
+
+        <TextView
+            android:id="@+id/lastNameTxtPO"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:paddingLeft="30dp"
+            android:layout_marginTop="10dp"
+            android:text="Last Name"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/l_NamePU"
+            android:layout_width="350dp"
+            android:layout_height="58dp"
+            android:layout_marginTop="5dp"
+            android:paddingLeft="20dp"
+            android:hint="Last Name"
+            android:text=""
+            android:background="@drawable/custom_edittext"
+            android:textColor="@color/black"
+            android:textColorHighlight="@color/cardview_dark_background"         />
+
+        <TextView
+            android:id="@+id/titleTxtPU"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:paddingLeft="30dp"
+            android:layout_marginTop="10dp"
+            android:text="Title"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+        <Spinner
+            android:id="@+id/titlePU"
+            android:layout_width="350dp"
+            android:layout_height="58dp"
+            android:layout_marginTop="10dp"
+            android:dropDownWidth="wrap_content"
+            android:entries="@array/title"
+            android:paddingLeft="20dp"
+            android:spinnerMode="dropdown"
+            android:hint="Title"
+            android:text=""
+            android:background="@drawable/custom_edittext"
+            android:textColor="@color/black"
+            android:textColorHighlight="@color/cardview_dark_background"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/emailTxtPU"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:paddingLeft="30dp"
+            android:layout_marginTop="10dp"
+            android:text="Email"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/emailPU"
+            android:layout_width="350dp"
+            android:layout_height="58dp"
+            android:layout_marginTop="5dp"
+            android:paddingLeft="20dp"
+            android:hint="Email"
+            android:text=""
+            android:background="@drawable/custom_edittext"
+            android:textColor="@color/black"
+            android:textColorHighlight="@color/cardview_dark_background"
+            />
+
+        <TextView
+            android:id="@+id/phoneNumberTxtPU"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:paddingLeft="30dp"
+            android:layout_marginTop="10dp"
+            android:text="First Name"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/phoneNumberPU"
+            android:layout_width="350dp"
+            android:layout_height="58dp"
+            android:layout_marginTop="5dp"
+            android:paddingLeft="20dp"
+            android:hint="Phone Number"
+            android:text=""
+            android:background="@drawable/custom_edittext"
+            android:textColor="@color/black"
+            android:textColorHighlight="@color/cardview_dark_background"
+            />
+
+        <TextView
+            android:id="@+id/addressTxtPU"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:paddingLeft="30dp"
+            android:layout_marginTop="10dp"
+            android:text="First Name"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:id="@+id/addressPU"
+            android:layout_width="350dp"
+            android:layout_height="58dp"
+            android:layout_marginTop="5dp"
+            android:paddingLeft="20dp"
+            android:spinnerMode="dropdown"
+            android:hint="Address"
+            android:text=""
+            android:background="@drawable/custom_edittext"
+            android:textColor="@color/black"
+            android:textColorHighlight="@color/cardview_dark_background"
+            />
+
+        <Button
+            android:id="@+id/update_button"
+            android:layout_width="350dp"
+            android:layout_height="58sp"
+            android:text="Update"
+            android:backgroundTint="@color/theme"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:textColor="#fff"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"/>
+    </LinearLayout>
+
+</ScrollView>

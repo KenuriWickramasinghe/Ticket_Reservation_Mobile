@@ -4,14 +4,23 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.example.mobile_travelreservation.model.Traveler;
+import com.example.mobile_travelreservation.model.LoginRequest;
+import com.example.mobile_travelreservation.remote.APIUtils;
+import com.example.mobile_travelreservation.remote.TravelerService;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 
 public class login extends AppCompatActivity {
 
+    TravelerService travelerService;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,14 +30,12 @@ public class login extends AppCompatActivity {
         EditText password = findViewById(R.id.login_password);
 
         Button login = findViewById(R.id.login_btn);
+        travelerService = APIUtils.getTravelerService();
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 checkDataEntered();
-                Traveler traveler = new Traveler();
-                traveler.setEmail(email.getText().toString());
-                traveler.setAddress(password.getText().toString());
-
+                loginTraveler(email.getText().toString(), password.getText().toString());
             }
 
             void checkDataEntered() {
@@ -43,6 +50,28 @@ public class login extends AppCompatActivity {
             boolean isEmpty(EditText text) {
                 CharSequence str = text.getText().toString();
                 return TextUtils.isEmpty(str);
+            }
+
+            private void loginTraveler(String email, String password) {
+                Call<LoginRequest> call = travelerService.login(email, password);
+                call.enqueue(new Callback<LoginRequest>() {
+                    @Override
+                    public void onResponse(Call<LoginRequest> call, Response<LoginRequest> response) {
+                        if (response.isSuccessful()) {
+                            // Handle a successful login here
+                            LoginRequest loginResponse = response.body();
+                            // You can perform actions based on the response
+                        } else {
+                            // Handle the case where the login was not successful
+                            Log.e("Login Error", "Login failed");
+                        }
+                    }
+
+                    public void onFailure(Call<LoginRequest> call, Throwable t) {
+                        // Handle the case where the network request fails
+                        Log.e("Network Error", t.getMessage());
+                    }
+                });
             }
         });
     }

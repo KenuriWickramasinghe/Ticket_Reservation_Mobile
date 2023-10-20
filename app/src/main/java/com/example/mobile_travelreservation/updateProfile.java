@@ -83,6 +83,10 @@ public class updateProfile extends AppCompatActivity {
                     return (TextUtils.isEmpty(email) && Patterns.EMAIL_ADDRESS.matcher(email).matches());
                 }
 
+                public void loadTraveler(String id){
+
+                }
+
                 public void updateTraveler(String id,Traveler traveler){
                     Call<Traveler> call = travelerService.updateTraveler(id,traveler);
                     call.enqueue(new Callback<Traveler>() {

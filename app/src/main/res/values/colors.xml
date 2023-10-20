@@ -5,4 +5,6 @@
     <color name="theme">#41B8E2</color>
     <color name="maroon">#800000</color>
     <color name="darkblue">#D5002F80</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
 </resources>

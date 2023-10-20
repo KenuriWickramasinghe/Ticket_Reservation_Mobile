@@ -40,8 +40,13 @@ public class updateProfile extends AppCompatActivity {
         travelerService = APIUtils.getTravelerService();
 
         Bundle extras = getIntent().getExtras();
-        final String userId = extras.getString("user_id");
+        String userId = ""; // Declare userId outside the if block
 
+        if (extras != null) {
+            userId = extras.getString("user_id"); // Assign value to userId
+        }
+
+        String finalUserId = userId;
         update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -56,7 +61,7 @@ public class updateProfile extends AppCompatActivity {
                 // traveler.setAddress(address.toString());
 
                 Log.e("traveler", traveler.getNIC().toString());
-                updateTraveler(userId,traveler);
+                updateTraveler(finalUserId,traveler);
             }
                 void checkDataEntered(){
                     if(isEmpty(nic)){

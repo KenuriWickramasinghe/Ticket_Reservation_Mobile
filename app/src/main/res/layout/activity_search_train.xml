@@ -207,25 +207,6 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
             </LinearLayout>
-
-            <!--
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                android:hint="Select Item"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                >
-                <AutoCompleteTextView
-                    android:id="@+id/autocomplete_dropdown_tkt_class"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="none" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-            -->
-
-
         </LinearLayout>
 
         <LinearLayout
@@ -252,25 +233,6 @@
                 android:onClick="checkAvailability"
                 />
 
-
         </LinearLayout>
-        <!--
-        <Button
-            android:id="@+id/button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Pick Date and Time"
-            android:onClick="showDateTimePicker" />
-           -->
-
-        <!--
-        <Spinner
-            android:id="@+id/spinner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:entries="@array/stringArray" />
-         -->
-
     </LinearLayout>
-
 </ScrollView>

@@ -156,13 +156,16 @@ public class updateProfile extends AppCompatActivity {
 
                 int itemId = item.getItemId();
                 if (itemId == R.id.home) {
-                    // Handle the "Home" item
+                    startActivity(new Intent(getApplicationContext(), Home.class));
+                    overridePendingTransition(0, 0);
                     return true;
                 } else if (itemId == R.id.search) {
-                    // Handle the "Search" item
+                    startActivity(new Intent(getApplicationContext(), TrainList.class));
+                    overridePendingTransition(0, 0);
                     return true;
                 } else if (itemId == R.id.add) {
-                    // Handle the "Add" item
+                    startActivity(new Intent(getApplicationContext(), SearchTrain.class));
+                    overridePendingTransition(0, 0);
                     return true;
                 } else if (itemId == R.id.history) {
                     // Handle the "History" item

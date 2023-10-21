@@ -15,11 +15,14 @@
         android:theme="@style/Theme.Mobile_TravelReservation"
         tools:targetApi="31">
         <activity
+            android:name=".Home"
+            android:exported="false" />
+        <activity
             android:name=".TrainListView"
             android:exported="false" />
         <activity
             android:name=".TrainList"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -55,12 +58,10 @@
         </activity>
         <activity
             android:name=".activeAccount"
-            android:exported="false" /> 
-            
-         <activity
-        android:name=".updateProfile"
-        android:exported="false" />
-            
+            android:exported="false" />
+        <activity
+            android:name=".updateProfile"
+            android:exported="false" />
         <activity
             android:name=".profile"
             android:exported="false" />
@@ -69,11 +70,8 @@
             android:exported="false" />
         <activity
             android:name=".login"
-            android:exported="false" />
-
-<!--        android:name=".MainActivity"-->
+            android:exported="false" /> <!-- android:name=".MainActivity" -->
         <activity
-
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

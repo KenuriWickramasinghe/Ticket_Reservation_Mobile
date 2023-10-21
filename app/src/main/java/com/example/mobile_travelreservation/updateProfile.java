@@ -43,8 +43,9 @@ public class updateProfile extends AppCompatActivity {
         Button update = findViewById(R.id.update_button);
         travelerService = APIUtils.getTravelerService();
 
-        Bundle extras = getIntent().getExtras();
-        final String userId = extras.getString("user_id");
+        String userId = "1";
+//        Bundle extras = getIntent().getExtras();
+//        final String userId = extras.getString("user_id");
 
         Call<Traveler> call = travelerService.getTraveler(userId);
             call.enqueue(new Callback<Traveler>() {

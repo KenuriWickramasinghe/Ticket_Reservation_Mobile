@@ -55,9 +55,12 @@
         </activity>
         <activity
             android:name=".activeAccount"
-            android:exported="false" /> <!-- <activity -->
-        <!-- android:name=".updateProfile" -->
-        <!-- android:exported="false" /> -->
+            android:exported="false" /> 
+            
+         <activity
+        android:name=".updateProfile"
+        android:exported="false" />
+            
         <activity
             android:name=".profile"
             android:exported="false" />
@@ -67,6 +70,18 @@
         <activity
             android:name=".login"
             android:exported="false" />
+
+<!--        android:name=".MainActivity"-->
+        <activity
+
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

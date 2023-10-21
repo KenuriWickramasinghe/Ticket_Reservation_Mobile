@@ -51,10 +51,16 @@ public class registration extends AppCompatActivity {
                 traveler.setNIC(nic.getText().toString());;
                 traveler.setFirstName(firstName.getText().toString());
                 traveler.setLastName(lastName.getText().toString());
-               // traveler.setTitle(title.toString());
+
+                String selectedTitle = title.getSelectedItem().toString();
+                traveler.setTitle(selectedTitle);
+
                 traveler.setPhoneNumber(phoneNumber.getText().toString());
                 traveler.setEmail(email.getText().toString());
-               // traveler.setAddress(address.toString());
+
+                String selectedAddress = address.getSelectedItem().toString();
+                traveler.setTitle(selectedAddress);
+
                 traveler.setPassword(password.getText().toString());
 
                 Log.e("traveler",traveler.getNIC().toString());
@@ -97,6 +103,8 @@ public class registration extends AppCompatActivity {
             }
 
             public void addTraveler(Traveler traveler){
+                Log.e("traveler",traveler.getNIC().toString());
+
                 Call<Traveler> call = travelerService.addTraveler(traveler);
                 call.enqueue(new Callback<Traveler>() {
                     @Override

@@ -15,8 +15,20 @@
         android:theme="@style/Theme.Mobile_TravelReservation"
         tools:targetApi="31">
         <activity
-            android:name=".UpdateReservation"
+            android:name=".TrainListView"
+            android:exported="false" />
+        <activity
+            android:name=".TrainList"
             android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".UpdateReservation"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -9,12 +9,12 @@ import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class activeAccount extends AppCompatActivity {
+public class Home extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_active_account);
+        setContentView(R.layout.activity_home);
 
         BottomNavigationView bottomNavigationView=findViewById(R.id.bottomNavigationView);
 
@@ -28,8 +28,6 @@ public class activeAccount extends AppCompatActivity {
 
                 int itemId = item.getItemId();
                 if (itemId == R.id.home) {
-                    startActivity(new Intent(getApplicationContext(), Home.class));
-                    overridePendingTransition(0, 0);
                     return true;
                 } else if (itemId == R.id.search) {
                     startActivity(new Intent(getApplicationContext(), TrainList.class));
@@ -50,6 +48,6 @@ public class activeAccount extends AppCompatActivity {
                 return false;
             }
         });
-    }
 
+    }
 }

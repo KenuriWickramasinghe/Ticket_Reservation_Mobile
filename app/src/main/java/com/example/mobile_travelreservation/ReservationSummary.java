@@ -1,12 +1,17 @@
 package com.example.mobile_travelreservation;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.w3c.dom.Text;
 
@@ -54,6 +59,41 @@ public class ReservationSummary extends AppCompatActivity {
         textView_arrival_time.setText(sample_arrival_time);
         textView_tkt_class.setText(sample_tkt_class);
         textView_tkt_qty.setText(sample_tkt_qty);
+
+        BottomNavigationView bottomNavigationView=findViewById(R.id.bottomNavigationView);
+
+        // Set Home selected
+        bottomNavigationView.setSelectedItemId(R.id.home);
+
+        // Perform item selected listener
+        bottomNavigationView.setOnItemSelectedListener(new BottomNavigationView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                int itemId = item.getItemId();
+                if (itemId == R.id.home) {
+                    startActivity(new Intent(getApplicationContext(), Home.class));
+                    overridePendingTransition(0, 0);
+                    return true;
+                } else if (itemId == R.id.search) {
+                    startActivity(new Intent(getApplicationContext(), TrainList.class));
+                    overridePendingTransition(0, 0);
+                    return true;
+                } else if (itemId == R.id.add) {
+                    startActivity(new Intent(getApplicationContext(), SearchTrain.class));
+                    overridePendingTransition(0, 0);
+                    return true;
+                } else if (itemId == R.id.history) {
+                    // Handle the "History" item
+                    return true;
+                } else if (itemId == R.id.person) {
+                    startActivity(new Intent(getApplicationContext(), profile.class));
+                    overridePendingTransition(0, 0);
+                    return true;
+                }
+                return false;
+            }
+        });
     }
 
     public void confirmReservation(View view){

@@ -2,9 +2,12 @@ package com.example.mobile_travelreservation;
 
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -21,6 +24,7 @@ import android.widget.DatePicker;
 import android.widget.TimePicker;
 
 import com.example.mobile_travelreservation.model.Reservation;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.text.DateFormat;
 
@@ -112,6 +116,38 @@ public class SearchTrain extends AppCompatActivity {
                 String item = adapterView.getItemAtPosition(i).toString();
                 reservation.setArrival(item);
                 Toast.makeText(SearchTrain.this, item + " Station", Toast.LENGTH_SHORT).show();
+            }
+        });
+        BottomNavigationView bottomNavigationView=findViewById(R.id.bottomNavigationView);
+
+        // Set Home selected
+        bottomNavigationView.setSelectedItemId(R.id.home);
+
+        // Perform item selected listener
+        bottomNavigationView.setOnItemSelectedListener(new BottomNavigationView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                int itemId = item.getItemId();
+                if (itemId == R.id.home) {
+                    startActivity(new Intent(getApplicationContext(), Home.class));
+                    overridePendingTransition(0, 0);
+                    return true;
+                } else if (itemId == R.id.search) {
+                    startActivity(new Intent(getApplicationContext(), TrainList.class));
+                    overridePendingTransition(0, 0);
+                    return true;
+                } else if (itemId == R.id.add) {
+                    return true;
+                } else if (itemId == R.id.history) {
+                    // Handle the "History" item
+                    return true;
+                } else if (itemId == R.id.person) {
+                    startActivity(new Intent(getApplicationContext(), profile.class));
+                    overridePendingTransition(0, 0);
+                    return true;
+                }
+                return false;
             }
         });
     }

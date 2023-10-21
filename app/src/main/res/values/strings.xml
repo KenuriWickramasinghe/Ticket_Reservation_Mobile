@@ -33,4 +33,12 @@
         <item>Ratnapura</item>
         <item>Kegalle</item>
     </string-array>
+    <string name="select">
+        Select Item
+    </string>
+    <string-array name="stringArray">
+        <item>String1</item>
+        <item>String2</item>
+        <item>String3</item>
+    </string-array>
 </resources>

@@ -17,6 +17,9 @@ public interface TravelerService {
     @GET("traveler/{id}")
     Call<Traveler> getTraveler(@Path("id") String id);
 
+    @GET("traveler/{id}/deactivate")
+    Call<Traveler> deactivateTraveler(@Path("id") String id);
+
     @POST("traveler/")
     Call<Traveler> addTraveler(@Body Traveler traveler);
 

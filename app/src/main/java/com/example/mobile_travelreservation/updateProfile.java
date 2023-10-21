@@ -1,11 +1,14 @@
 package com.example.mobile_travelreservation;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.util.Patterns;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,6 +18,7 @@ import android.widget.Toast;
 import com.example.mobile_travelreservation.model.Traveler;
 import com.example.mobile_travelreservation.remote.APIUtils;
 import com.example.mobile_travelreservation.remote.TravelerService;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -42,6 +46,35 @@ public class updateProfile extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         final String userId = extras.getString("user_id");
 
+        Call<Traveler> call = travelerService.getTraveler(userId);
+            call.enqueue(new Callback<Traveler>() {
+                @Override
+                public void onResponse(Call<Traveler> call, Response<Traveler> response) {
+                    if (response.isSuccessful()) {
+                        Traveler traveler = response.body();
+                        nic.setText(traveler.getNIC());
+                        firstName.setText(traveler.getFirstName());
+                        lastName.setText(traveler.getLastName());
+//                        String selectedTitle = traveler.getTitle();
+//                        String selectedAddress = traveler.getAddress();
+//
+//                        // Set the selected values in the Spinners
+//                        int titlePosition = titleAdapter.getPosition(selectedTitle);
+//                        int addressPosition = addressAdapter.getPosition(selectedAddress);
+//                        titleSpinner.setSelection(titlePosition);
+//                        addressSpinner.setSelection(addressPosition);
+
+                        phoneNumber.setText(traveler.getPhoneNumber());
+                        email.setText(traveler.getEmail());
+                    } else {
+                        Toast.makeText(updateProfile.this, "Failed to load traveler data", Toast.LENGTH_SHORT).show();
+                    }
+                }
+                @Override
+                public void onFailure(Call<Traveler> call, Throwable t) {
+                    Log.e("ERROR: ", t.getMessage());
+                }
+            });
         update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -50,10 +83,15 @@ public class updateProfile extends AppCompatActivity {
                 traveler.setNIC(nic.getText().toString());;
                 traveler.setFirstName(firstName.getText().toString());
                 traveler.setLastName(lastName.getText().toString());
-                // traveler.setTitle(title.toString());
+
+                String selectedTitle = title.getSelectedItem().toString();
+                traveler.setTitle(selectedTitle);
+
                 traveler.setPhoneNumber(phoneNumber.getText().toString());
                 traveler.setEmail(email.getText().toString());
-                // traveler.setAddress(address.toString());
+
+                String selectedAddress = address.getSelectedItem().toString();
+                traveler.setTitle(selectedAddress);
 
                 Log.e("traveler", traveler.getNIC().toString());
                 updateTraveler(userId,traveler);
@@ -83,10 +121,6 @@ public class updateProfile extends AppCompatActivity {
                     return (TextUtils.isEmpty(email) && Patterns.EMAIL_ADDRESS.matcher(email).matches());
                 }
 
-                public void loadTraveler(String id){
-
-                }
-
                 public void updateTraveler(String id,Traveler traveler){
                     Call<Traveler> call = travelerService.updateTraveler(id,traveler);
                     call.enqueue(new Callback<Traveler>() {
@@ -106,6 +140,39 @@ public class updateProfile extends AppCompatActivity {
                         }
                     });
                 }
+
             });
-    }
+
+        BottomNavigationView bottomNavigationView=findViewById(R.id.bottomNavigationView);
+
+        // Set Home selected
+        bottomNavigationView.setSelectedItemId(R.id.home);
+
+        // Perform item selected listener
+        bottomNavigationView.setOnItemSelectedListener(new BottomNavigationView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                int itemId = item.getItemId();
+                if (itemId == R.id.home) {
+                    // Handle the "Home" item
+                    return true;
+                } else if (itemId == R.id.search) {
+                    // Handle the "Search" item
+                    return true;
+                } else if (itemId == R.id.add) {
+                    // Handle the "Add" item
+                    return true;
+                } else if (itemId == R.id.history) {
+                    // Handle the "History" item
+                    return true;
+                } else if (itemId == R.id.person) {
+                    startActivity(new Intent(getApplicationContext(), profile.class));
+                    overridePendingTransition(0, 0);
+                    return true;
+                }
+                return false;
+            }
+        });
+        }
 }

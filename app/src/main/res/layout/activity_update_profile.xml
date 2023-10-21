@@ -151,7 +151,7 @@
             android:layout_gravity="left"
             android:paddingLeft="30dp"
             android:layout_marginTop="10dp"
-            android:text="First Name"
+            android:text="Phone Number"
             android:textSize="20dp"
             android:textStyle="bold" />
 
@@ -175,7 +175,7 @@
             android:layout_gravity="left"
             android:paddingLeft="30dp"
             android:layout_marginTop="10dp"
-            android:text="First Name"
+            android:text="Address"
             android:textSize="20dp"
             android:textStyle="bold" />
 

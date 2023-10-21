@@ -2,6 +2,7 @@ package com.example.mobile_travelreservation;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -35,7 +36,7 @@ public class login extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 checkDataEntered();
-                loginTraveler(email.getText().toString(), password.getText().toString());
+               loginTraveler(email.getText().toString(), password.getText().toString());
             }
 
             void checkDataEntered() {
@@ -53,14 +54,18 @@ public class login extends AppCompatActivity {
             }
 
             private void loginTraveler(String email, String password) {
+                Log.e("traveler",email);
+
                 Call<LoginRequest> call = travelerService.login(email, password);
                 call.enqueue(new Callback<LoginRequest>() {
                     @Override
                     public void onResponse(Call<LoginRequest> call, Response<LoginRequest> response) {
                         if (response.isSuccessful()) {
-                            // Handle a successful login here
-                            LoginRequest loginResponse = response.body();
-                            // You can perform actions based on the response
+
+                            //LoginRequest loginResponse = response.body();
+                            Intent i = new Intent(getApplicationContext(), updateProfile.class);
+                            startActivity(i);
+
                         } else {
                             // Handle the case where the login was not successful
                             Log.e("Login Error", "Login failed");
